@@ -17,3 +17,9 @@ BEGIN
 	PRINT('Esquema HARAKIRI creado')
 END
 GO
+
+
+Mati: proveedor
+Samu: venta
+Oscar: producto
+Ari: cliente
