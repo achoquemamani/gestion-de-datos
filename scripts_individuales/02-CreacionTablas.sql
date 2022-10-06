@@ -1,0 +1,76 @@
+USE GD2C2022
+GO  
+----------------------------------------------------------------------------------------------------------
+/*CREACION DE TABLAS*/
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id= OBJECT_ID(N'[HARAKIRI].PROVEEDOR') AND type = 'U')
+BEGIN
+	CREATE TABLE HARAKIRI.PROVEEDOR (
+		
+        PROVEEDOR_CUIT nvarchar(50) NOT NULL,
+        PROVEEDOR_LOCALIDAD_CODIGO decimal(18,0), --FK A LOCALIDAD
+        PROVEEDOR_RAZON_SOCIAL nvarchar(50), 
+        PROVEEDOR_DOMICILIO nvarchar(50), 
+        PROVEEDOR_MAIL nvarchar(50), 
+	)
+	PRINT('Tabla HARAKIRI.PROVEEDOR creada')
+END
+GO
+--
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id= OBJECT_ID(N'[HARAKIRI].LOCALIDAD') AND type = 'U')
+BEGIN
+	CREATE TABLE HARAKIRI.LOCALIDAD (
+		
+        LOCALIDAD_CODIGO decimal(18,0) NOT NULL,
+        LOCALIDAD_PROVINCIA_CODIGO decimal(18,0),
+        LOCALIDAD_NOMBRE,
+        LOCALIDAD_CODIGO_POSTAL 
+	)
+	PRINT('Tabla HARAKIRI.LOCALIDAD creada')
+END
+GO
+--
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id= OBJECT_ID(N'[HARAKIRI].PROVINCIA') AND type = 'U')
+BEGIN
+	CREATE TABLE HARAKIRI.PROVINCIA (
+		
+        PROVINCIA_CODIGO decimal(18,0) NOT NULL,
+        LOCALIDAD_NOMBRE
+	)
+	PRINT('Tabla HARAKIRI.PROVINCIA creada')
+END
+GO
+--
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id= OBJECT_ID(N'[HARAKIRI].COMPRA') AND type = 'U')
+BEGIN
+	CREATE TABLE HARAKIRI.COMPRA (
+		
+        COMPRA_NUMERO decimal(19,0) NOT NULL,
+        COMPRA_MEDIO_DE_PAGO_CODIGO nvarchar(255), --FK
+        PROVEEDOR_CUIT nvarchar(50), --FK
+        COMPRA_FECHA date,
+        COMPRA_TOTAL decimal(18,2)
+	)
+	PRINT('Tabla HARAKIRI.COMPRA creada')
+END
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id= OBJECT_ID(N'[HARAKIRI].VENTA') AND type = 'U')
+BEGIN
+	CREATE TABLE HARAKIRI.VENTA (
+		
+        VENTA_CODIGO decimal(19,0) NOT NULL,
+        VENTA_CANAL_CODIGO decimal(19,0)
+        VENTA_CUPON_CODIGO nvarchar(255)
+        VENTA_MEDIO_DE_PAGO_CODIGO decimal(19, 0)
+        VENTA_CLIENTE_CODIGO decimal(19, 0)
+        VENTA_MEDIO_ENVIO_POR_LOCALIDAD_CODIGO decimal(19, 0)
+        VENTA_FECHA date
+        VENTA_TOTAL decimal(18, 2)
+	)
+	PRINT('Tabla HARAKIRI.VENTA creada')
+END
+GO
+
+
