@@ -8,4 +8,3 @@ BEGIN
 	PRINT('Esquema HARAKIRI creado')
 END
 GO
-
