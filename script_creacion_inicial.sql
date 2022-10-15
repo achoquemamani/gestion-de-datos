@@ -1,5 +1,14 @@
 USE GD2C2022
 GO
+---------------------------------------------------------------------------------------
+/*
+DROP PROCEDURE  HARAKIRI.RELLENAR_TABLA_MARCA
+DROP PROCEDURE  HARAKIRI.RELLENAR_TABLA_CATEGORIA
+DROP PROCEDURE  HARAKIRI.RELLENAR_TABLA_MATERIAL
+DROP PROCEDURE HARAKIRI.RELLENAR_TABLA_TIPO_VARIANTE
+DROP PROCEDURE HARAKIRI.RELLENAR_TABLA_VARIANTE
+DROP PROCEDURE HARAKIRI.RELLENAR_TABLA_PRODUCTO
+*/
 -----------------------------------------------------------------------------------------------------
 /*Borrado de FKS de las tablas si existen*/
 
