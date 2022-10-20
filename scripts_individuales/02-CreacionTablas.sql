@@ -167,7 +167,6 @@ BEGIN
         CUPON_TIPO_CODIGO decimal(19,0),
         CUPON_FECHA_DESDE date,
         CUPON_FECHA_HASTA date,
-        CUPON_IMPORTE decimal(18,2),
         CUPON_VALOR decimal(18,2)
         )
 	PRINT('Tabla HARAKIRI.CUPON creada')
