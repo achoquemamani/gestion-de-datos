@@ -121,7 +121,11 @@ BEGIN
 	PRINT('Procedure HARAKIRI.MIGRAR_TABLA_CLIENTE eliminado')
 END
 
-
+IF OBJECT_ID('HARAKIRI.MIGRAR_TABLA_COMPRA_POR_PRODUCTO') IS NOT NULL
+BEGIN
+	DROP PROCEDURE HARAKIRI.MIGRAR_TABLA_COMPRA_POR_PRODUCTO
+	PRINT('Procedure HARAKIRI.MIGRAR_TABLA_COMPRA_POR_PRODUCTO eliminado')
+END
 
 -----------------------------------------------------------------------------------------------------
 /*Borrado de FKS de las tablas si existen*/
