@@ -127,6 +127,12 @@ BEGIN
 	PRINT('Procedure HARAKIRI.MIGRAR_TABLA_COMPRA_POR_PRODUCTO eliminado')
 END
 
+IF OBJECT_ID('HARAKIRI.MIGRAR_TABLA_MEDIO_ENVIO_POR_LOCALIDAD') IS NOT NULL
+BEGIN
+	DROP PROCEDURE HARAKIRI.MIGRAR_TABLA_MEDIO_ENVIO_POR_LOCALIDAD
+	PRINT('Procedure HARAKIRI.MIGRAR_TABLA_MEDIO_ENVIO_POR_LOCALIDAD eliminado')
+END
+
 -----------------------------------------------------------------------------------------------------
 /*Borrado de FKS de las tablas si existen*/
 
