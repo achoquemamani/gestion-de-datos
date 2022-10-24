@@ -65,7 +65,6 @@ BEGIN
 		
         VENTA_CODIGO decimal(19,0) NOT NULL,
         VENTA_CANAL_CODIGO decimal(19,0),
-        VENTA_CUPON_CODIGO nvarchar(255),
         VENTA_MEDIO_DE_PAGO_CODIGO decimal(19, 0),
         VENTA_CLIENTE_CODIGO decimal(19, 0),
         VENTA_MEDIO_ENVIO_POR_LOCALIDAD_CODIGO decimal(19, 0),
