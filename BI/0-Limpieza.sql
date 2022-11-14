@@ -1,3 +1,6 @@
+USE GD2C2022
+GO
+
 /*BORRADO DE PROCEDURES*/
 
 
@@ -101,6 +104,14 @@ BEGIN
 	ALTER TABLE HARAKIRI.BI_HECHO_VENTA_DESCUENTO DROP CONSTRAINT FK_BI_HECHO_VENTA_DESCUENTO_BI_CANAL_VENTA
 END
 GO
+
+IF EXISTS (SELECT * 
+    		   FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS 
+               WHERE CONSTRAINT_NAME ='FK_BI_HECHO_COMPRA_PRODUCTO_BI_TIEMPO')
+BEGIN
+	ALTER TABLE HARAKIRI.BI_HECHO_COMPRA_PRODUCTO DROP CONSTRAINT FK_BI_HECHO_COMPRA_PRODUCTO_BI_TIEMPO
+END
+GO
 -----------------------------------------------------------------------------------------------------
 
 /*Borrado de tablas*/
@@ -192,16 +203,5 @@ END
 
 -----------------------------------------------------------------------------------------------------
 /*BORRADO DE ESQUEMA*/
-
-IF EXISTS (SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'HARAKIRI')
-BEGIN
-   DROP SCHEMA HARAKIRI
-   PRINT('Esquema HARAKIRI borrado')
-END
-GO
-
-
 IF EXISTS (select * from sys.objects where object_id = OBJECT_ID('HARAKIRI.rangoEtario_fx') and type = 'FN')
 	DROP FUNCTION HARAKIRI.rangoEtario_fx
-END
-GO
