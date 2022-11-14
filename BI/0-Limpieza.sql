@@ -114,3 +114,16 @@ BEGIN
 	DROP TABLE HARAKIRI.BI_HECHO_COMPRA_PRODUCTO
 	PRINT('Tabla HARAKIRI.BI_HECHO_COMPRA_PRODUCTO eliminada')
 END
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+/*BORRADO DE ESQUEMA*/
+
+IF EXISTS (SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'HARAKIRI')
+BEGIN
+   DROP SCHEMA HARAKIRI
+   PRINT('Esquema HARAKIRI borrado')
+END
+GO
