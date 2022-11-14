@@ -1,3 +1,33 @@
+
+GO
+CREATE FUNCTION HARAKIRI.rangoEtario_fx(@fecha_nac DATE)
+RETURNS NVARCHAR(15)
+AS
+BEGIN
+	DECLARE @rango NVARCHAR(15)
+	DECLARE @edad INT
+
+SELECT @edad = convert(int,DATEDIFF(d,@fecha_nac, getdate())/365.25)
+		
+
+	SELECT @rango = CASE 
+        WHEN @edad < 25  THEN '<25'
+		WHEN @edad >= 25 AND @edad < 35 THEN '25 - 35'
+		WHEN @edad >= 35 AND @edad <= 55 THEN '35 - 55'
+		ELSE '>55'
+		END
+
+	RETURN @rango
+END
+GO
+
+
+
+
+----------------------------------------------------------------------------------------------------------
+/*CREACION DE TABLAS DEL MODELO BI*/
+
+
 CREATE TABLE HARAKIRI.BI_HECHO_VENTA_PRODUCTO(
     VENTA_PRODUCTO_CODIGO decimal(19,0) not null,
     EDAD_CODIGO decimal(19,0),
@@ -52,3 +82,65 @@ CREATE TABLE HARAKIRI.BI_PROVEEDOR(
     PROVEEDOR_RAZON_SOCIAL nvarchar(255),
 );
 GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id= OBJECT_ID(N'[HARAKIRI].BI_TIEMPO') AND type = 'U')
+BEGIN
+	CREATE TABLE HARAKIRI.BI_TIEMPO(
+		TIEMPO_CODIGO DECIMAL(19,0) NOT NULL IDENTITY(1,1),
+		TIEMPO_ANIO INT,
+		TIEMPO_MES INT,
+	)
+	PRINT('Tabla HARAKIRI.BI_TIEMPO creada')
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id= OBJECT_ID(N'[HARAKIRI].BI_RANGO_EDAD') AND type = 'U')
+BEGIN
+	CREATE TABLE HARAKIRI.BI_RANGO_EDAD(
+		EDAD_CODIGO INT NOT NULL IDENTITY(1,1),
+		EDAD_CATEGORIA NVARCHAR(15)
+	)
+	PRINT('Tabla HARAKIRI.BI_RANGO_EDAD creada')
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id= OBJECT_ID(N'[HARAKIRI].BI_HECHO_COMPRA_PRODUCTO') AND type = 'U')
+BEGIN
+	CREATE TABLE HARAKIRI.BI_HECHO_COMPRA_PRODUCTO(
+		 COMPRA_PRODUCTO_CODIGO decimal(19,0) not null,
+        PROVEEDOR_CUIT NVARCHAR(50),
+        TIEMPO_CODIGO decimal(19,0),
+        PRODUCTO_CODIGO nvarchar(50),
+         PRODUCTO_CANTIDAD decimal(18,0),
+        PRODUCTO_PRECIO_UNITARIO decimal(18,2),
+       
+	)
+	PRINT('Tabla HARAKIRI.BI_HECHO_COMPRA_PRODUCTO creada')
+END
+GO
+
+CREATE TABLE HARAKIRI.BI_CATEGORIA(
+    CATEGORIA_CODIGO decimal(18,0) not null,
+    CATEGORIA_NOMBRE nvarchar(255)
+);  
+GO
+
+CREATE TABLE HARAKIRI.BI_PRODUCTO(
+    PRODUCTO_CODIGO nvarchar(50) not null,
+    PRODUCTO_NOMBRE nvarchar(50)
+);  
+GO
+
+CREATE TABLE HARAKIRI.BI_CANAL_VENTA(
+    CANAL_CODIGO decimal(19,0) not null,
+    CANAL_NOMBRE nvarchar(255),
+    CANAL_COSTO decimal(18,2)
+);  
+GO
+
+CREATE TABLE HARAKIRI.BI_HECHO_VENTA_DESCUENTO(
+    TIPO_DESCUENTO_CODIGO nvarchar(50),
+    DESCUENTO_IMPORTE decimal(18,2),
+    TIEMPO_CODIGO decimal(19,0),
+    CANAL_CODIGO decimal(19,0)
+);  
