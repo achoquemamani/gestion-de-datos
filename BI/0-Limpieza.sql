@@ -17,6 +17,13 @@ BEGIN
 END
 GO
 
+
+IF OBJECT_ID('HARAKIRI.MIGRAR_TABLA_BI_HECHO_COMPRA_PRODUCTO') IS NOT NULL
+BEGIN
+	DROP PROCEDURE HARAKIRI.MIGRAR_TABLA_BI_HECHO_COMPRA_PRODUCTO
+	PRINT('Procedure HARAKIRI.MIGRAR_TABLA_BI_HECHO_COMPRA_PRODUCTO eliminado')
+END
+GO
 -----------------------------------------------------------------------------------------------------
 
 /*Borrado de FKS de las tablas si existen*/
