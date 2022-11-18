@@ -311,6 +311,7 @@ BEGIN
 END
 GO
 -----------------------------------------------------------------------------------------------------
-/*BORRADO DE ESQUEMA*/
+/*BORRADO DE FUNCIÓN*/
 IF EXISTS (select * from sys.objects where object_id = OBJECT_ID('HARAKIRI.rangoEtario_fx') and type = 'FN')
 	DROP FUNCTION HARAKIRI.rangoEtario_fx
+GO
