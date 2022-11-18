@@ -1,13 +1,4 @@
-adasda
-
-
-
- 
-IF EXISTS (SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'STAR_TEAM_RELOADED')
-  DROP SCHEMA STAR_TEAM_RELOADED
-
-
-USE GD2C2021
+USE GD2C2022
 GO
 ----------------------------------------------------------------------------------------------------------
 /*CREACION DE ESQUEMA*/
@@ -17,9 +8,3 @@ BEGIN
 	PRINT('Esquema HARAKIRI creado')
 END
 GO
-
-
-Mati: proveedor
-Samu: venta
-Oscar: producto
-Ari: cliente
