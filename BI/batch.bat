@@ -1,2 +1,2 @@
 cd scripts_individuales
-copy /b 0-Limpieza.sql + 01-CreacionSchema.sql + 01-CreacionTablas.sql + 02-CreacionPKs.sql + 03-CreacionFKs.sql "script_creacion_BI.sql"
+copy /b 0-Limpieza.sql + 01-CreacionSchema.sql + 02-CreacionTablas.sql + 03-CreacionPKs.sql + 05-CreacionFKs.sql "script_creacion_BI.sql"
