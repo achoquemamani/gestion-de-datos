@@ -1,5 +1,4 @@
-USE GD2C2022
-GO
+
 ----------------------------------------------------------------------------------------------------------
 /*CREACION DE ESQUEMA*/
 IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'HARAKIRI')
