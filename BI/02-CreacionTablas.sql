@@ -72,7 +72,7 @@ GO
 
 CREATE TABLE HARAKIRI.BI_VENTA(
     VENTA_CODIGO decimal(19,0) not null,
-    VENTA_TOTAL nvarchar(50)
+    VENTA_TOTAL decimal(18, 2)
 );
 GO
 
