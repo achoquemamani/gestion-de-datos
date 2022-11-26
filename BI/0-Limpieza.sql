@@ -329,12 +329,6 @@ BEGIN
 END
 GO
 
-IF OBJECT_ID('HARAKIRI.MIGRAR_TABLA_BI_COMPRA') IS NOT NULL
-BEGIN
-	DROP PROCEDURE HARAKIRI.MIGRAR_TABLA_BI_COMPRA
-	PRINT('Procedure HARAKIRI.MIGRAR_TABLA_BI_COMPRA eliminado')
-END
-GO
 -----------------------------------------------------------------------------------------------------
 /*BORRADO DE FUNCIÓN*/
 IF EXISTS (select * from sys.objects where object_id = OBJECT_ID('HARAKIRI.rangoEtario_fx') and type = 'FN')
